@@ -6,9 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aim Trainer</title>
     <link rel="stylesheet" href="./css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <canvas id="canvas" <!-- width="1800" height="1200" -->></canvas>
+    <div class="score text-4xl ml-2 mt-2 select-none">
+        <span>Score: </span>
+        <span id="scoreEl">0</span>
+    </div>
+
+    <div class="window" id="windowStart">
+        <!--
+            fixed inset-0 flex items-center justify-center
+        -->
+        <div class="scoreboard max-w-md w-full p-6 text-center rounded-lg"> <!--bg-white-->
+            <h1 class="font-bold text-8xl">0</h1>
+            <p class="text-2xl">Points</p>
+            <div>
+                <button class="button w-2/5 text-white py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
+                    Start Game
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
 
     <script src="./javaScript/js-aim-trainer.js"></script>
 </body>

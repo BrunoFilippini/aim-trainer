@@ -6,3 +6,27 @@ canvas {
     background-color: black;
 }
 
+.score {
+    position: fixed;
+    color: white;
+}
+
+.window {
+    position: fixed; 
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreboard {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+

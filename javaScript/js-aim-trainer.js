@@ -9,8 +9,8 @@ const startGameBtn = document.querySelector('#startGameBtn')
 const windowStart = document.querySelector('#windowStart')
 const bigScore = document.querySelector('#bigScore')
 
-let score = 0
 let fail = 0
+let score = 0
 
 function reset () {
     score = 0
@@ -30,13 +30,25 @@ function voltaXeY() {
     arrPosition.push(xRandom, yRandom)
 }
 
-voltaXeY()
-console.log(arrPosition)
-
 class target {
     constructor() {
         this.level = 1000
         this.raio = Math.floor((canvas.width + canvas.height / 2) / 100);
+        this.intervalID = null
+    }
+
+    test (){
+        const id = setInterval(() => {
+            voltaXeY()
+            this.mudaAlvo()
+            console.log(arrPosition)
+        }, 1000); 
+        this.intervalID = id
+        console.log(id)
+    }
+
+    clear(){
+        clearInterval(this.intervalID)
     }
     
     circle (x, y, radius, color) {
@@ -92,7 +104,6 @@ class target {
  */
 
     fire() {
-        
         addEventListener('click', (event) => {
             
             let alvoTodo = this.raio + Math.floor((canvas.width + canvas.height / 2) / 45)
@@ -145,22 +156,16 @@ class target {
             console.log("fim")
             windowStart.style.display = "flex"
             bigScore.innerHTML = score
-            fail = 0
+            reset()
         }
     }
 }  
 
-
+let test = new target()
+canvas.onclick = test.fire();
 
 startGameBtn.addEventListener('click', () => {
-    const targete = new target ()
-    setInterval(() => {
-        voltaXeY()
-        targete.mudaAlvo()
-        console.log(arrPosition)
-    }, 1000); 
-    
-    canvas.onclick = targete.fire();
+    test.clear()
+    test.test()
     windowStart.style.display = "none"
-    reset()
 }) 

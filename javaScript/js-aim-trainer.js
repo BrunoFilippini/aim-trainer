@@ -7,27 +7,32 @@ canvas.height = innerHeight
 const scoreEl = document.querySelector('#scoreEl')
 const startGameBtn = document.querySelector('#startGameBtn')
 const windowStart = document.querySelector('#windowStart')
+const bigScore = document.querySelector('#bigScore')
 
 let score = 0
-let hard = 400
-let mid = 600
-let easy = 800
+let fail = 0
 
+function restart () {
+    score = 0
+    fail = 0
+}
 
 class target {
-    constructor(level) {
-        this.level = level
+    constructor() {
+        this.level = 1000
         this.raio = Math.floor((canvas.width + canvas.height / 2) / 100);
     }
     
-    circle (x, y, rai, color) {
+    circle (x, y, radius, color) {
         ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(x, y, rai, 0, Math.PI * 2);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
     }
 
     alvos (x, y) {
+        
         let bordaRed = this.raio + Math.floor((canvas.width + canvas.height / 2) / 40);
         let bordaWhite = this.raio + Math.floor((canvas.width + canvas.height / 2) / 70);
 
@@ -41,16 +46,22 @@ class target {
         return Math.floor(Math.random() * posicao);
     }
 
+    refreshScreen() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
     mudaAlvo() { 
-        setInterval(() => {  
-            this.refreshScreen()
+     setInterval(() => {             
+            /* this.refreshScreen() */
 
             let xRandom = this.sorteiaPosicao(canvas.width);
             let yRandom = this.sorteiaPosicao(canvas.height);
             this.alvos(xRandom, yRandom);
             this.fire(xRandom, yRandom)
-        }, this.level); 
+      }, this.level);         
     }
+
+    
 
  /*    dificuldade() {
 
@@ -69,10 +80,6 @@ class target {
     };
  */
 
-    refreshScreen() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
     fire(x, y) {
         addEventListener('click', (event) => {
 
@@ -82,40 +89,69 @@ class target {
 
             let mouseX = event.pageX - canvas.offsetLeft;
             let mouseY = event.pageY - canvas.offsetTop;
-
-            scoreEl.textContent = score
+            
+                
+            
         
             if((mouseX > x - alvoCenter) && (mouseX < x + alvoCenter) && 
                 (mouseY > y - alvoCenter)  && (mouseY < y + alvoCenter)) {
                
                 score += 100
+                console.log("Centro")
+                
                 
 
             } else if ((mouseX > x - alvoMid) && (mouseX < x + alvoMid) && 
                 (mouseY > y - alvoMid)  && (mouseY < y + alvoMid)) {
                
                 score += 50
+                console.log("mid")
             
 
             } else if ((mouseX > x - alvoTodo) && (mouseX < x + alvoTodo) && 
                 (mouseY > y - alvoTodo)  && (mouseY < y + alvoTodo)) {
                
-                score += 10            
+                score += 10   
+                console.log("Centro")        
 
             } else {
-                console.log("errou!")
-            }
+
+                fail++
+                console.log(`fail>  ${fail}`)
+            } 
+
+            scoreEl.textContent = score
+
+               /*  xRandom = 0
+                yRandom = 0 */
+                this.endGame()
+            
         })
+    } 
+
+    endGame() {
+        if (fail > 3) {
+            console.log("fim")
+            windowStart.style.display = "flex"
+            bigScore.innerHTML = score
+            fail = 0
+        }
     }
 }  
 
 
-const targete = new target (easy)
+
+
+const targete = new target ()
 
 startGameBtn.addEventListener('click', () => {
-    targete.mudaAlvo()
-    targete.fire()
+    restart()
     windowStart.style.display = "none"
+    targete.mudaAlvo()
 })
 
 console.log(targete) 
+
+console.log(restart)
+console.log(`fail> ${fail}`)
+console.log(`score> ${score}`)

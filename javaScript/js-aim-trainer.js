@@ -12,10 +12,26 @@ const bigScore = document.querySelector('#bigScore')
 let score = 0
 let fail = 0
 
-function restart () {
+function reset () {
     score = 0
     fail = 0
 }
+
+arrPosition = []
+
+function sorteiaPosicao(posicao) { 
+    return Math.floor(Math.random() * posicao);
+}
+
+function voltaXeY() {
+    arrPosition = []
+    let xRandom = sorteiaPosicao(canvas.width);
+    let yRandom = sorteiaPosicao(canvas.height);
+    arrPosition.push(xRandom, yRandom)
+}
+
+voltaXeY()
+console.log(arrPosition)
 
 class target {
     constructor() {
@@ -42,26 +58,21 @@ class target {
         
     }
 
-    sorteiaPosicao(posicao) { 
-        return Math.floor(Math.random() * posicao);
-    }
-
     refreshScreen() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     mudaAlvo() { 
-     setInterval(() => {             
-            /* this.refreshScreen() */
+      /* setInterval(() => {  */            
+                this.refreshScreen()
 
-            let xRandom = this.sorteiaPosicao(canvas.width);
-            let yRandom = this.sorteiaPosicao(canvas.height);
-            this.alvos(xRandom, yRandom);
-            this.fire(xRandom, yRandom)
-      }, this.level);         
-    }
-
+                this.alvos(arrPosition[0], arrPosition[1]);
+                
+                // NAO PODE TER THIS.FIRE(xRandom, yRandom) AQUI
+                // PRECISA RETORNAR (xRandom, yRandom) para o FIRE COMO ARGUMENTO X E Y
     
+          /* }, this.level);  */        
+        }
 
  /*    dificuldade() {
 
@@ -80,18 +91,20 @@ class target {
     };
  */
 
-    fire(x, y) {
+    fire() {
+        
         addEventListener('click', (event) => {
-
+            
             let alvoTodo = this.raio + Math.floor((canvas.width + canvas.height / 2) / 45)
             let alvoMid = this.raio + Math.floor((canvas.width + canvas.height / 2) / 70)
             let alvoCenter = this.raio
+            
 
             let mouseX = event.pageX - canvas.offsetLeft;
             let mouseY = event.pageY - canvas.offsetTop;
             
-                
-            
+            let x = arrPosition[0]
+            let y = arrPosition[1]        
         
             if((mouseX > x - alvoCenter) && (mouseX < x + alvoCenter) && 
                 (mouseY > y - alvoCenter)  && (mouseY < y + alvoCenter)) {
@@ -112,7 +125,7 @@ class target {
                 (mouseY > y - alvoTodo)  && (mouseY < y + alvoTodo)) {
                
                 score += 10   
-                console.log("Centro")        
+                console.log("Borda")        
 
             } else {
 
@@ -122,10 +135,8 @@ class target {
 
             scoreEl.textContent = score
 
-               /*  xRandom = 0
-                yRandom = 0 */
-                this.endGame()
-            
+        
+            this.endGame() 
         })
     } 
 
@@ -141,17 +152,15 @@ class target {
 
 
 
-
-const targete = new target ()
-
 startGameBtn.addEventListener('click', () => {
-    restart()
+    const targete = new target ()
+    setInterval(() => {
+        voltaXeY()
+        targete.mudaAlvo()
+        console.log(arrPosition)
+    }, 1000); 
+    
+    canvas.onclick = targete.fire();
     windowStart.style.display = "none"
-    targete.mudaAlvo()
-})
-
-console.log(targete) 
-
-console.log(restart)
-console.log(`fail> ${fail}`)
-console.log(`score> ${score}`)
+    reset()
+}) 

@@ -182,7 +182,6 @@ class AimTrainer {
 let newGame = new AimTrainer()
 canvas.onclick = newGame.fire();
 
-
 // START BTN
 startGameBtn.disabled = true;
 

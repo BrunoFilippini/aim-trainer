@@ -178,24 +178,16 @@ function enableStartBtn() {
     startGameBtn.disabled = false;
 }
 
+function disableStartBtn() {
+    startGameBtn.disabled = true;
+}
+
 startGameBtn.addEventListener('click', () => {
     windowStart.style.display = "none"
     newGame.clearStart()
+    disableStartBtn();
 })
 
-// RESTART BTN
-windowRestart.style.display = "none"
-
-restartGameBtn.disabled = true;
-function enableRestartBtn() {
-    restartGameBtn.disabled = false;
-}
-
-restartGameBtn.addEventListener('click', () => {
-    windowRestart.style.display = "none"
-    newGame.clearStart()
-}) 
- 
 // Difficult Start Game
 difficultEasyBtn.addEventListener('click', () => {
     newGame.clearDifficult()
@@ -218,11 +210,30 @@ difficultHardBtn.addEventListener('click', () => {
     reset()
 })
 
+// RESTART BTN
+windowRestart.style.display = "none"
+
+restartGameBtn.disabled = true;
+function enableRestartBtn() {
+    restartGameBtn.disabled = false;
+}
+
+function disableRestartBtn() {
+    restartGameBtn.disabled = true;
+}
+
+restartGameBtn.addEventListener('click', () => {
+    windowRestart.style.display = "none"
+    newGame.clearStart()
+    disableRestartBtn()
+}) 
+
 // Difficult Restart
 difficultEasyRestartBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultEasy()
     restartGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 difficultMidRestartBtn.addEventListener('click', () => {

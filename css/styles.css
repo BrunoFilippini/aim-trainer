@@ -37,6 +37,13 @@ canvas {
 .buttonStart {
     background-color: rgb(255, 0, 0);
     color: white;
+    border: 5px solid black;
+}
+
+.buttonStartEnabled {
+    color: black;
+    background: rgb(0, 255, 0);
+    border: 5px solid black;
 }
 
 .btnSelectDifficult {
@@ -46,7 +53,6 @@ canvas {
 
 .btnsDifficult {
     display: flex;
-    
 }
 
 .aimTrainer {

@@ -68,30 +68,24 @@ class AimTrainer {
         const id = setInterval(() => {
             sendXY()
             this.changeTarget()
-            console.log(arrPosition)
         }, 1000); 
         this.intervalID = id
-        console.log(this.difficultEasy)
     }
 
     difficultMid() {
         const id = setInterval(() => {
             sendXY()
             this.changeTarget()
-            console.log(arrPosition)
         }, 800); 
         this.intervalID = id
-        console.log(this.difficultMid)
     }
 
     difficultHard() {
         const id = setInterval(() => {
             sendXY()
             this.changeTarget()
-            console.log(arrPosition)
         }, 500); 
         this.intervalID = id
-        console.log(this.difficultHard)
     }
 
     stopGame(){
@@ -147,19 +141,15 @@ class AimTrainer {
         
             if ((mouseX > x - centerTarget) && (mouseX < x + centerTarget) && (mouseY > y - centerTarget)  && (mouseY < y + centerTarget)) {
                 score += 100
-                console.log("Centro")
                 
             } else if ((mouseX > x - midTarget) && (mouseX < x + midTarget) && (mouseY > y - midTarget)  && (mouseY < y + midTarget)) {
                 score += 50
-                console.log("mid")
 
             } else if ((mouseX > x - allTarget) && (mouseX < x + allTarget) && (mouseY > y - allTarget)  && (mouseY < y + allTarget)) {
-                score += 10   
-                console.log("Borda")        
+                score += 10          
 
             } else {
                 fail++
-                console.log(`fail>  ${fail}`)
             } 
             scoreEl.textContent = score
             failEl.textContent = fail - 1    
@@ -169,7 +159,6 @@ class AimTrainer {
 
     endGame() {
         if (fail > 3) {
-            console.log("fim")
             windowRestart.style.display = "flex"
             bigScore.innerHTML = score
             reset()
@@ -211,30 +200,42 @@ restartGameBtn.addEventListener('click', () => {
 difficultEasyBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultEasy()
+    startGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 difficultMidBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultMid()
+    startGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 difficultHardBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultHard()
+    startGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 // Difficult Restart
 difficultEasyRestartBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultEasy()
+    restartGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 difficultMidRestartBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultMid()
+    restartGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })
 
 difficultHardRestartBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultHard()
+    restartGameBtn.classList.toggle('buttonStartEnabled');
+    reset()
 })

@@ -6,9 +6,10 @@ canvas {
     background-color: black;
 }
 
-.score {
+.scoreUpdate {
     position: fixed;
     color: white;
+    margin: 10px;
 }
 
 .window {
@@ -22,11 +23,32 @@ canvas {
 .scoreboard {
     background-color: white;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    height: 20%;
 }
 
-.button {
+.gameOver{
+    color: rgb(255, 0, 0);
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em darkblue;
+}
+
+.buttonStart {
     background-color: rgb(255, 0, 0);
     color: white;
 }
 
+.btnSelectDifficult {
+    background-color: rgb(0, 255, 0);
+    border: 5px solid black;
+}
+
+.btnsDifficult {
+    display: flex;
+    
+}
+
+.aimTrainer {
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em rgb(0, 255, 13);
+}

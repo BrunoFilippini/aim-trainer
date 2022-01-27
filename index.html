@@ -9,29 +9,103 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div class="score text-4xl ml-2 mt-2 select-none">
-        <span>Score: </span>
-        <span id="scoreEl">0</span>
+<body class="select-none">
+    
+    <div class="scoreUpdate text-4xl ml-2 mt-2 ">
+        <div class="score">
+            
+            <span>Score: </span>
+            <span id="scoreEl">0</span>
+
+        </div>
+        
+        <div>
+            
+            <span>Fails: </span>
+            <span id="failEl">0</span>
+
+        </div>
     </div>
 
     <div class="window" id="windowStart">
         
-        <div class="scoreboard max-w-md w-full p-6 text-center rounded-lg">
+    <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full ">
 
-            <h1 class="font-bold text-8xl" id="bigScore">0</h1>
+            <div class="text-center">
 
-            <p class="text-2xl">Points</p>
+                <h1 class="gameOver font-bold text-8xl ">Game Over</h1>
+
+                <h1 class="font-bold text-8xl" id="bigScore">0</h1>
+
+                <p class=" text-2xl">Points</p>
             
-            <div>
-                <button class="button w-2/5 text-white py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
-                    Start Game
+            
+                <div>
+                    <button class="buttonStart font-bold w-96 py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
+                        Restart
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="btnsDifficult ">
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultEasy" onclick="enableStartBtn()">
+                    Easy
                 </button>
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultMid" onclick="enableStartBtn()">
+                    Mid
+                </button >
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultHard" onclick="enableStartBtn()">
+                    Hard
+                </button>
+                
             </div>
             
-        </div>
+        </div> 
 
-    </div>
+
+
+
+
+
+   <!--       <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full ">
+
+            <div class="text-center">
+
+                <h1 class="aimTrainer font-bold text-8xl py-12">Aim Trainer</h1>
+            
+            
+                <div>
+                    <button class="buttonStart font-bold w-96 py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
+                        Start Game
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="btnsDifficult ">
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultEasy" onclick="enableStartBtn()">
+                    Easy
+                </button>
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultMid" onclick="enableStartBtn()">
+                    Mid
+                </button >
+    
+                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultHard" onclick="enableStartBtn()">
+                    Hard
+                </button>
+                
+            </div>
+            
+        </div> -->
+        
+        
+    </div> 
 
     <canvas id="canvas"></canvas>
 

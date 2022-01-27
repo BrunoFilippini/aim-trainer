@@ -5,9 +5,15 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const scoreEl = document.querySelector('#scoreEl')
+const failEl = document.querySelector('#failEl')
 const startGameBtn = document.querySelector('#startGameBtn')
 const windowStart = document.querySelector('#windowStart')
 const bigScore = document.querySelector('#bigScore')
+
+const difficultEasyBtn = document.querySelector('#difficultEasy')
+const difficultMidBtn = document.querySelector('#difficultMid')
+const difficultHardBtn = document.querySelector('#difficultHard')
+
 
 let fail = 0
 let score = 0
@@ -37,18 +43,42 @@ class target {
         this.intervalID = null
     }
 
-    test (){
+    difficultEasy (){
         const id = setInterval(() => {
             voltaXeY()
             this.mudaAlvo()
             console.log(arrPosition)
         }, 1000); 
         this.intervalID = id
-        console.log(id)
+        console.log(this.difficultEasy)
     }
 
-    clear(){
+    difficultMid (){
+        const id = setInterval(() => {
+            voltaXeY()
+            this.mudaAlvo()
+            console.log(arrPosition)
+        }, 800); 
+        this.intervalID = id
+        console.log(this.difficultMid)
+    }
+
+    difficultHard (){
+        const id = setInterval(() => {
+            voltaXeY()
+            this.mudaAlvo()
+            console.log(arrPosition)
+        }, 500); 
+        this.intervalID = id
+        console.log(this.difficultHard)
+    }
+
+    clearDifficult(){
         clearInterval(this.intervalID)
+    }
+
+    clearStart() {
+        reset()
     }
     
     circle (x, y, radius, color) {
@@ -74,34 +104,10 @@ class target {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    mudaAlvo() { 
-      /* setInterval(() => {  */            
-                this.refreshScreen()
-
-                this.alvos(arrPosition[0], arrPosition[1]);
-                
-                // NAO PODE TER THIS.FIRE(xRandom, yRandom) AQUI
-                // PRECISA RETORNAR (xRandom, yRandom) para o FIRE COMO ARGUMENTO X E Y
-    
-          /* }, this.level);  */        
-        }
-
- /*    dificuldade() {
-
-        if (score <= 5000) {
-        this.level = 1500
-
-        } else if (score <= 2500) {
-
-            this.level = 1000
-            
-        } else if (score <= 3500) {
-
-            this.level = 500
-        }
-        console.log(this.dificuldade)
-    };
- */
+    mudaAlvo() {            
+        this.refreshScreen()
+        this.alvos(arrPosition[0], arrPosition[1]);     
+    }
 
     fire() {
         addEventListener('click', (event) => {
@@ -145,6 +151,8 @@ class target {
             } 
 
             scoreEl.textContent = score
+            failEl.textContent = fail - 1
+
 
         
             this.endGame() 
@@ -164,8 +172,31 @@ class target {
 let test = new target()
 canvas.onclick = test.fire();
 
+startGameBtn.disabled = true;
+
+function enableStartBtn() {
+    
+        startGameBtn.disabled = false; //button is enabled
+    
+}
+
+
 startGameBtn.addEventListener('click', () => {
-    test.clear()
-    test.test()
     windowStart.style.display = "none"
+    test.clearStart()
 }) 
+
+difficultEasyBtn.addEventListener('click', () => {
+    test.clearDifficult()
+    test.difficultEasy()
+})
+
+difficultMidBtn.addEventListener('click', () => {
+    test.clearDifficult()
+    test.difficultMid()
+})
+
+difficultHardBtn.addEventListener('click', () => {
+    test.clearDifficult()
+    test.difficultHard()
+})

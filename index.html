@@ -7,108 +7,110 @@
     <title>Aim Trainer</title>
     <link rel="stylesheet" href="./css/styles.css">
 
+    <!-- tailwindcss -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="select-none">
     
-    <div class="scoreUpdate text-4xl ml-2 mt-2 ">
-        <div class="score">
+    <div class="scoreUpdate text-4xl ml-2 mt-2 "> <!-- SCORES FIXED -->
+
+        <div> <!-- Score -->
             
             <span>Score: </span>
+
             <span id="scoreEl">0</span>
 
         </div>
         
         <div>
             
-            <span>Fails: </span>
+            <span>Fails: </span> <!-- Fails -->
+
             <span id="failEl">0</span>
 
         </div>
+
     </div>
 
-    <div class="window" id="windowStart">
+    <div class="window"> <!-- Pages -->
         
-    <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full ">
-
-            <div class="text-center">
-
-                <h1 class="gameOver font-bold text-8xl ">Game Over</h1>
-
-                <h1 class="font-bold text-8xl" id="bigScore">0</h1>
-
-                <p class=" text-2xl">Points</p>
+        <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full " id="windowStart"> <!-- START WIDOW -->
             
-            
-                <div>
-                    <button class="buttonStart font-bold w-96 py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
-                        Restart
-                    </button>
-                </div>
-
-            </div>
-
-            <div class="btnsDifficult ">
-    
-                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultEasy" onclick="enableStartBtn()">
-                    Easy
-                </button>
-    
-                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultMid" onclick="enableStartBtn()">
-                    Mid
-                </button >
-    
-                <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultHard" onclick="enableStartBtn()">
-                    Hard
-                </button>
+            <div class="text-center"> <!-- Welcome Start Game -->
                 
-            </div>
-            
-        </div> 
-
-
-
-
-
-
-   <!--       <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full ">
-
-            <div class="text-center">
-
                 <h1 class="aimTrainer font-bold text-8xl py-12">Aim Trainer</h1>
-            
-            
-                <div>
+                
+                <div> <!-- Start Game Button -->
+
                     <button class="buttonStart font-bold w-96 py-4 mt-6 text-2xl rounded-lg" id="startGameBtn">
                         Start Game
                     </button>
+
                 </div>
 
             </div>
 
-            <div class="btnsDifficult ">
-    
+            <div class="btnsDifficult "> <!-- Difficult Buttons -->
+                
                 <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultEasy" onclick="enableStartBtn()">
                     Easy
                 </button>
-    
+                
                 <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultMid" onclick="enableStartBtn()">
                     Mid
                 </button >
-    
+                
                 <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultHard" onclick="enableStartBtn()">
                     Hard
                 </button>
                 
             </div>
             
-        </div> -->
+        </div>
         
+        <div class="scoreboard max-w-6xl w-full h-1/4 rounded-full" id="windowRestart"> <!-- GAMEOVER WIDOW -->
+    
+                <div class="text-center"> <!-- Game Over Scoreboard Final -->
+    
+                    <h1 class="gameOver font-bold text-8xl ">Game Over</h1>
+    
+                    <h1 class="font-bold text-8xl" id="bigScore">0</h1>
+    
+                    <p class=" text-2xl">Points</p>
+                
+                    <div> <!-- Restart Button-->
+
+                        <button class="buttonStart font-bold w-96 py-4 mt-6 text-2xl rounded-lg" id="restartGameBtn">
+                            Restart
+                        </button>
+
+                    </div>
+    
+                </div>
+    
+                <div class="btnsDifficult" > <!-- Difficult Buttons -->
+        
+                    <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultEasyRestart" onclick="enableRestartBtn()">
+                        Easy
+                    </button>
+        
+                    <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultMidRestart" onclick="enableRestartBtn()">
+                        Mid
+                    </button >
+        
+                    <button class="btnSelectDifficult w-28 text-black font-medium text-2xl rounded-lg py-2 mt-4 mx-2" id="difficultHardRestart" onclick="enableRestartBtn()">
+                        Hard
+                    </button>
+                    
+                </div>
+                
+        </div> 
         
     </div> 
-
-    <canvas id="canvas"></canvas>
-
+    
+    <canvas id="canvas"></canvas> <!-- Canvas -->
+    
     <script src="./javaScript/js-aim-trainer.js"></script>
+
 </body>
 </html>

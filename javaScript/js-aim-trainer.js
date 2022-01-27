@@ -94,6 +94,10 @@ class AimTrainer {
         console.log(this.difficultHard)
     }
 
+    stopGame(){
+        clearInterval(this.intervalID)
+    }
+
     clearDifficult(){
         clearInterval(this.intervalID)
     }
@@ -169,6 +173,7 @@ class AimTrainer {
             windowRestart.style.display = "flex"
             bigScore.innerHTML = score
             reset()
+            this.stopGame()
         }
     }
 }  

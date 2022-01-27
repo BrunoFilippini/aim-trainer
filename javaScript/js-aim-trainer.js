@@ -223,7 +223,6 @@ difficultEasyRestartBtn.addEventListener('click', () => {
     newGame.clearDifficult()
     newGame.difficultEasy()
     restartGameBtn.classList.toggle('buttonStartEnabled');
-    reset()
 })
 
 difficultMidRestartBtn.addEventListener('click', () => {

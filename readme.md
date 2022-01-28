@@ -21,4 +21,4 @@ You can play on this [link](https://brunofilippini.github.io/aim-trainer/)
 
 ## More
 
-More about this project annd my journey (in Portuguese) here
+More about this project annd my journey (in Portuguese) [here](https://docs.google.com/presentation/d/1drnd8VxGBt3hJEsfaLSlS7Mja-FeKANj/edit?usp=sharing&ouid=101453396776583647701&rtpof=true&sd=true)
